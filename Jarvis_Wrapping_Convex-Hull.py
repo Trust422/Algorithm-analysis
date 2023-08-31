@@ -1,3 +1,4 @@
+
 import matplotlib.pyplot as plt
 
 def orientation(p, q, r):
@@ -46,6 +47,10 @@ def distance(p1, p2):
 points = [(0.5, 3), (1, 1), (2, 2), (4, 4), (0, 0), (1, 2), (3, 1), (3, 3)]
 convex_points = convex_hull(points)
 print("Puntos del convex hull:", convex_points)
+print("Todos los puntos:")
+for point in points:
+    print(point)
+
 
 # Separar las coordenadas x e y de los puntos del convex hull
 convex_x = [point[0] for point in convex_points]
@@ -55,10 +60,13 @@ convex_y = [point[1] for point in convex_points]
 convex_x.append(convex_x[0])
 convex_y.append(convex_y[0])
 
-# Crear el gráfico
+# Crear el gráfico 
 plt.plot(convex_x, convex_y, marker='o')
+plt.scatter([point[0] for point in points], [point[1] for point in points], color='red', marker='x', label='Todos los puntos')
 plt.xlabel('Coordenada X')
 plt.ylabel('Coordenada Y')
 plt.title('Polígono del Convex Hull')
+plt.legend()
 plt.grid()
 plt.show()
+
